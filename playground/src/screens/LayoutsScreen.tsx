@@ -36,7 +36,7 @@ export default class LayoutsScreen extends NavigationComponent<NavigationProps, 
     this.state = {
       componentDidAppear: false,
     };
-    Appearance.setColorScheme('dark');
+    Appearance.setColorScheme('dark'); // This breaks in Android without setting runOnUiThread in the native module
     Appearance.addChangeListener((data) => {
       console.log(data);
     });
