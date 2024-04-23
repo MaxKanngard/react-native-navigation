@@ -5,6 +5,7 @@ import {
   NavigationComponent,
   NavigationProps,
 } from 'react-native-navigation';
+import { Appearance } from 'react-native';
 
 import Root from '../components/Root';
 import Button from '../components/Button';
@@ -35,6 +36,10 @@ export default class LayoutsScreen extends NavigationComponent<NavigationProps, 
     this.state = {
       componentDidAppear: false,
     };
+    Appearance.setColorScheme('dark');
+    Appearance.addChangeListener((data) => {
+      console.log(data);
+    });
   }
   componentWillAppear() {
     console.log('componentWillAppear:', this.props.componentId);
@@ -69,6 +74,9 @@ export default class LayoutsScreen extends NavigationComponent<NavigationProps, 
   render() {
     return (
       <Root componentId={this.props.componentId}>
+        <Button label="Setting to dark" onPress={() => Appearance.setColorScheme('dark')} />
+        <Button label="Setting to light" onPress={() => Appearance.setColorScheme('light')} />
+        <Button label="Setting to system" onPress={() => Appearance.setColorScheme(null)} />
         <Button label="Stack" testID={STACK_BTN} onPress={this.stack} />
         <Button label="BottomTabs" testID={BOTTOM_TABS_BTN} onPress={this.bottomTabs} />
         <Button label="SideMenu" testID={SIDE_MENU_BTN} onPress={this.sideMenu} />

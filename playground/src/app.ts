@@ -34,6 +34,7 @@ function setRoot() {
         options: {
           bottomTabs: {
             testID: testIDs.MAIN_BOTTOM_TABS,
+            backgroundColor: { light: '#ffffff', dark: '#0000ff' },
           },
         },
         children: [
