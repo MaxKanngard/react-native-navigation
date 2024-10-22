@@ -6,6 +6,7 @@ import Screens from './Screens';
 import Navigation from '../services/Navigation';
 import { component } from '../commons/Layouts';
 import testIDs from '../testIDs';
+import { Appearance } from 'react-native';
 
 const {
   PUSH_BTN,
@@ -39,6 +40,9 @@ export default class StackScreen extends React.Component<NavigationProps> {
   render() {
     return (
       <Root componentId={this.props.componentId}>
+        <Button label="Setting to dark" onPress={() => Appearance.setColorScheme('dark')} />
+        <Button label="Setting to light" onPress={() => Appearance.setColorScheme('light')} />
+        <Button label="Setting to system" onPress={() => Appearance.setColorScheme(null)} />
         <Button label="Push" testID={PUSH_BTN} onPress={this.push} />
         <Button
           label="Push Lifecycle Screen"
